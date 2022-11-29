@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IAPEX</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class=" row m-0 aling-items-center justify-content-center ">
+      <div class="col-auto bg-lite p-5">
+        <div class="card  text-center " style="width: 18rem;">
+          <div class="card-header">
+            <h4 class="card-title">Iniciar sesión</h4>
+          </div>
+          <div class="card-body">
+            <form id="login-form" #lForm="ngForm" [formGroup]="loginForm" (ngSubmit)="submitLogin()" novalidate>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <mat-form-field style="width: 100%; margin-bottom: 10px;"
+                      [ngClass]="{'mat-input-invalid': submitted && error?.code == 1}">
+                      <input matInput class="form-control" type="text" formControlName="Usuario"
+                        placeholder="Correo electronico" />
+                      <br>
+                      <mat-hint style="color: red;"
+                        *ngIf="submitted && error?.code == 1 && !loginForm.controls.Usuario.hasError('required')">
+                        {{error.message}}
+                      </mat-hint>
+                      <mat-hint style="color: red;"
+                        *ngIf="submitted && loginForm.controls.Usuario.hasError('required')">
+                        Este
+                        campo
+                        es obligatorio</mat-hint>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <mat-form-field style="width: 100%;"
+                      [ngClass]="{'mat-input-invalid': submitted && error?.code == 2}">
+                      <input matInput class="form-control" type="password" formControlName="Contrasena"
+                        placeholder="Contraseña" />
+                      <br>
+                      <mat-hint style="color: red;"
+                        *ngIf="submitted && error?.code == 2 && !loginForm.controls.Contrasena.hasError('required')">
+                        {{error.message}}
+                      </mat-hint>
+                      <mat-hint style="color: red;"
+                        *ngIf="submitted && loginForm.controls.Contrasena.hasError('required')">
+                        Este
+                        campo
+                        es obligatorio</mat-hint>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </form>
+            <button class="btn btn-confirmar btn-round" type="submit" form="login-form" (click)="submitLogin()"> Sign
+              In</button>
+          </div>
+          <div class="footer-card">
+            <button class="btn btn-cancelarS btn-round" type="submit" form="login-form"> Reportar problema</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
